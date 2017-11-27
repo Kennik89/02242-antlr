@@ -1,15 +1,17 @@
 package PG;
 
-public class Edge {
+import java.util.LinkedList;
+
+class Edge {
 	
 	private Node from;
 	private Node to;
-	private String label;
+	private String code;
 
-	public Edge(Node from, Node to, String label)	{
+	public Edge(Node from, Node to, String code)	{
 		this.from = from;
 		this.to = to;
-		this.label = label;
+		this.code = code;
 	}
 
 }
