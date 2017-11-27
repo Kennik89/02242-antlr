@@ -1,5 +1,9 @@
 package DetectionOfSigns;
 
-public class Analysis {
+import Variables.Variables;
 
+public class Analysis {
+	Variables variables = new Variables();
+	
+	
 }
