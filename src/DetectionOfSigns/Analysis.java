@@ -1,5 +1,5 @@
 package DetectionOfSigns;
 
-public class analysis {
+public class Analysis {
 
 }
