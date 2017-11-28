@@ -71,6 +71,22 @@ public class Graph {
 		finalNodes.add(node);
 	}
 	
+	public ArrayList<Node> getNodes() {
+		return nodes;
+	}
+	
+	public ArrayList<Edge> getEdges() {
+		return edges;
+	}
+	
+	public Node getInitialNode()	{
+		return initialNode;
+	}
+	
+	public LinkedList<Node> getFinalNodes()	{
+		return finalNodes;
+	}
+	
 	public void graphCheck()	{
 		if(!initialNode.equals(null))	{
 			ArrayList<Node> unvisitedNodes = nodes;
