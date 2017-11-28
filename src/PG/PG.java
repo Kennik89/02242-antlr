@@ -7,7 +7,10 @@ public class PG {
 	public static void main(String args[] ) {
 		Graph pg = new Graph();
 	
-		pg.edges.add(new Edge(new Node("q1"), new Node("q2"), "int x;"));
+		Node q0 = pg.addInitialNode(); // q0
+		Node q1 = pg.addNode(); // q1
+		Node q2 = pg.addFinalNode(); // q2
 		
+		pg.addEdge(q0, q1, "int x");
 	}
 }

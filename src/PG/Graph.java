@@ -10,20 +10,64 @@ public class Graph {
 	Node initialNode;
 	LinkedList<Node> finalNodes = new LinkedList<Node>();
 
-	public void addNode()	{
+	public Node addNode()	{
 		int count = nodes.size();
-		nodes.add(new Node("q" + count));
+		Node node = new Node("q" + count);
+		nodes.add(node);
+		
+		return node;
 	}	
 	
-	public void addEdge(Node from, Node to, String code) {
-		edges.add(new Edge(from, to, code));
+	public Node addInitialNode()	{
+		Node node = addNode();
+		initialNode = node;
+		
+		return node;
+	}	
+	
+	public Node addFinalNode()	{
+		Node node = addNode();
+		finalNodes.add(node);
+		
+		return node;
+	}	
+
+	public Edge addEdge(Node from, Node to, String code)	{
+		Edge edge = new Edge(from, to, code);
+		edges.add(edge);
+		return edge;
+		
 	}
 	
-	public void addInitialNode(Node node)	{
+	public Edge addEdge(String _from, String _to, String code)	{
+		Node from = null;
+		Node to = null;
+		for(Node node : nodes) {
+			if(node.getLabel().equals(_from))
+				from = node;
+			else if(node.getLabel().equals(_to))
+				to = node;
+			if(from != null & to != null)
+				break;
+		}
+		return addEdge(from, to, code);
+	}
+	
+	public void setInitialNode(Node node)	{
 		initialNode = node;
 	}
+
+	public void setInitialNode(String label)	{
+		for(Node node : nodes)
+			if(node.getLabel().equals(label))	{
+				initialNode = node;
+				return;
+			}
+	}
 	
-	public void addFinalNode(Node node)	{
+	
+	
+	public void setFinalNode(Node node)	{
 		finalNodes.add(node);
 	}
 	
@@ -37,19 +81,17 @@ public class Graph {
 			while(!postNodes.isEmpty()) {
 				thisNode = postNodes.pop();
 				unvisitedNodes.remove(thisNode);
-				for(Edge findEdges : edges.)	{
-					
+				for(Edge edge : edges)	{
+					if(unvisitedNodes.contains(edge.getTo()) & !postNodes.contains(edge.getTo()))	{
+						postNodes.add(edge.getTo());
+						System.out.println(thisNode.toString() + " " + edge.toString());
+					}
+						
 				}
 			}
 		}else {
 			System.out.println("Missing an initial node");
 		}
-	}
-
-	LinkedList<Node> getNodes(Node currentNode)	{
-		currentNode.
-	}
-	
-	
+	}	
 	
 }

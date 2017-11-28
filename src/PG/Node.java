@@ -1,27 +1,25 @@
 package PG;
 
-import java.util.LinkedList;
-
 class Node {
 	
 	private String label;
-	private LinkedList<Edge> from;
-	private LinkedList<Edge> to;
 
 	public Node(String label)	{
 		this.label = label;
 	}
 
-	public void addFrom(Node node)	{
-		
+	
+	public String getLabel() {
+		return label;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString() + " " + label;
 	}
 	
-	public LinkedList<Node> getPreNodes(){
-		LinkedList<Node> tempNodes;
-		LinkedList<Edge> edges = from;
-		
-		
-		return null;
-	}
-	
+
 }
+
+

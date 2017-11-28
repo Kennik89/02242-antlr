@@ -1,7 +1,5 @@
 package PG;
 
-import java.util.LinkedList;
-
 class Edge {
 	
 	private Node from;
@@ -13,5 +11,18 @@ class Edge {
 		this.to = to;
 		this.code = code;
 	}
+	
+	public Node getTo()	{
+		return to;
+	}
+	
+	public Node getFrom()	{
+		return from;
+	}
 
+	@Override
+	public String toString() {
+		return super.toString() + " " + code;
+	}
+	
 }
