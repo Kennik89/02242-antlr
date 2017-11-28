@@ -4,10 +4,12 @@ public class SingleVariable {
 	private String name;
 	private int value;
 	
-	public SingleVariable(String name, int value){
-		this.name = name;
-		this.value= value;
+	public SingleVariable(String newName, int newValue){
+		this.name = newName;
+		this.value= newValue;
 	}
+	
+	
 	
 	
 }
