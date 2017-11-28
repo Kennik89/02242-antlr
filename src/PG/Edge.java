@@ -19,6 +19,10 @@ class Edge {
 	public Node getFrom()	{
 		return from;
 	}
+	
+	public String getCode()	{
+		return code;
+	}
 
 	@Override
 	public String toString() {
