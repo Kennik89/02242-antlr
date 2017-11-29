@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class Graph {
 	
 	ArrayList<Node> nodes = new ArrayList<Node>();
-	ArrayList<Edge> edges = new ArrayList<Edge>();
+	LinkedList<Edge> edges = new LinkedList<Edge>();
 	Node initialNode;
 	LinkedList<Node> finalNodes = new LinkedList<Node>();
 
@@ -75,7 +75,7 @@ public class Graph {
 		return nodes;
 	}
 	
-	public ArrayList<Edge> getEdges() {
+	public LinkedList<Edge> getEdges() {
 		return edges;
 	}
 	
