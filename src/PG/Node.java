@@ -1,6 +1,6 @@
 package PG;
 
-class Node {
+public class Node {
 	
 	private String label;
 

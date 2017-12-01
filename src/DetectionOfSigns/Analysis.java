@@ -15,10 +15,10 @@ public class Analysis {
 		//b
 		
 		//d
-		if(e.label.contains("int ")) {
-			variableName = e.label.substring(4, 5);
+		if(e.getCode().contains("int ")) {
+			variableName = e.getCode().substring(4, 5);
 			activity = "int";
-			if(e.label.contains("[")) {
+			if(e.getCode().contains("[")) {
 				activity = "array";
 			}
 		}

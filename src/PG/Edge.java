@@ -1,6 +1,6 @@
 package PG;
 
-class Edge {
+public class Edge {
 	
 	private Node from;
 	private Node to;
@@ -18,6 +18,10 @@ class Edge {
 	
 	public Node getFrom()	{
 		return from;
+	}
+	
+	public String getCode()	{
+		return code;
 	}
 
 	@Override
