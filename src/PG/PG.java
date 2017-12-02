@@ -12,5 +12,6 @@ public class PG {
 		Node q2 = pg.addFinalNode(); // q2
 		
 		pg.addEdge(q0, q1, "int x");
+		pg.addEdge(q1, q2, "x := 5");
 	}
 }
