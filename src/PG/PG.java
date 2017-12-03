@@ -11,7 +11,7 @@ public class PG {
 		test3();
 	}
 
-	private static void test3() {
+	private static void test1() {
 		pg1 = new Graph();
 		
 		Node q0 = pg1.addInitialNode(); // q0
@@ -31,7 +31,7 @@ public class PG {
 		Node q3 = pg2.addNode();
 	}
 
-	private static void test1() {
+	private static void test3() {
 		Graph pg1 = new Graph();
 	
 		Node q0 = pg1.addInitialNode(); // q0
