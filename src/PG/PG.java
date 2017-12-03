@@ -45,7 +45,9 @@ public class PG {
 
 		GraphTraversal gt = new GraphTraversal();
 
-		LinkedList<Node> route = gt.graphWalker(pg); //inderholder sekvensen af noder der også bliver printet
+		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
+		//inderholder sekvensen af noder der også bliver print og pr node er der en liste over alle variables værdier
+		//så man kan se hvordan variablerne ændres udervejs.
 
 	}
 }
