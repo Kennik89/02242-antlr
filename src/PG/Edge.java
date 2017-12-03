@@ -2,9 +2,9 @@ package PG;
 
 public class Edge {
 	
-	private Node from;
-	private Node to;
-	private String code;
+	public Node from;
+	public Node to;
+	public String code;
 
 	public Edge(Node from, Node to, String code)	{
 		this.from = from;
