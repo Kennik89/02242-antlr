@@ -9,6 +9,36 @@ public class Variables {
 		variables.add(var);
 	}
 	
+	public int findValueOfVariable(String name) {
+		for (int i = 0; i < variables.size(); i++) {
+			if(variables.get(i).name.equals(name)) {
+				return variables.get(i).value;
+			}
+		}
+		return 0;
+	}
+	
+	public void addValueToVariable(String name, int value) {
+		for (int i = 0; i < variables.size(); i++) {
+			if(variables.get(i).name.equals(name)) {
+				variables.get(i).value = value;
+			}
+		}
+	}
+	
+	public String allVariables() {
+		String vars = "";
+		
+		for (int i = 0; i < variables.size(); i++) {
+			vars += variables.get(i).name;
+			vars += ": ";
+			vars += variables.get(i).value;
+			vars += "   ";
+		}
+		
+		return vars;
+	}
+	
 }
 
 
