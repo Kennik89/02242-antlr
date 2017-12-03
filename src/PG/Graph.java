@@ -9,7 +9,7 @@ public class Graph {
 	LinkedList<Edge> edges = new LinkedList<Edge>();
 	Node initialNode;
 	LinkedList<Node> finalNodes = new LinkedList<Node>();
-
+	
 	public Node addNode()	{
 		int count = nodes.size();
 		Node node = new Node("q" + count);
@@ -73,6 +73,10 @@ public class Graph {
 	
 	public void setFinalNode(Node node)	{
 		finalNodes.add(node);
+	}
+	
+	public LinkedList<Node> getNodes() {
+		return nodes;
 	}
 	
 	public void graphCheck()	{
