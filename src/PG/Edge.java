@@ -1,6 +1,6 @@
 package PG;
 
-public class Edge {
+class Edge {
 	
 	public Node from;
 	public Node to;

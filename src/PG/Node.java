@@ -1,6 +1,6 @@
 package PG;
 
-public class Node {
+class Node {
 	
 	private String label;
 	private Edge edgeOut_1 = null;
