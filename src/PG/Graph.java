@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class Graph {
 	
-	LinkedList<Node> nodes = new LinkedList<Node>();
+	ArrayList<Node> nodes = new ArrayList<Node>();
 	LinkedList<Edge> edges = new LinkedList<Edge>();
 	Node initialNode;
 	LinkedList<Node> finalNodes = new LinkedList<Node>();
@@ -31,12 +31,10 @@ public class Graph {
 		
 		return node;
 	}	
-	
+
 	public Edge addEdge(Node from, Node to, String code)	{
 		Edge edge = new Edge(from, to, code);
 		edges.add(edge);
-		from.addEdge(edge);
-		
 		return edge;
 		
 	}
@@ -67,17 +65,31 @@ public class Graph {
 			}
 	}
 	
-	public int numberOfEdges() {
-		return edges.size();
-	}
+	
 	
 	public void setFinalNode(Node node)	{
 		finalNodes.add(node);
 	}
 	
+	public ArrayList<Node> getNodes() {
+		return nodes;
+	}
+	
+	public LinkedList<Edge> getEdges() {
+		return edges;
+	}
+	
+	public Node getInitialNode()	{
+		return initialNode;
+	}
+	
+	public LinkedList<Node> getFinalNodes()	{
+		return finalNodes;
+	}
+	
 	public void graphCheck()	{
 		if(!initialNode.equals(null))	{
-			LinkedList<Node> unvisitedNodes = nodes;
+			ArrayList<Node> unvisitedNodes = nodes;
 			LinkedList<Node> postNodes = null;
 			postNodes.add(initialNode);
 			Node thisNode;
@@ -96,15 +108,6 @@ public class Graph {
 		}else {
 			System.out.println("Missing an initial node");
 		}
-	}
-	
-	public Edge getEdgeBetween(Node q1, Node q2) {
-		for (int i = 0; i < edges.size(); i++) {
-			if(edges.get(i).from.equals(q1) && edges.get(i).to.equals(q2)){
-				return edges.get(i);
-			}
-		}
-		return null;
-	}
+	}	
 	
 }
