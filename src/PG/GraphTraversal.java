@@ -47,10 +47,9 @@ public class GraphTraversal {
 		} 
 	}
 
-	public LinkedList<Node> graphWalker(Graph pg) throws NumberFormatException, ScriptException {
-		LinkedList<Node> CompeteNodeSequence = new LinkedList<Node>();
+	public LinkedList<NodeAndVariable> graphWalker(Graph pg) throws NumberFormatException, ScriptException {
+		LinkedList<NodeAndVariable> CompeteNodeSequence = new LinkedList<NodeAndVariable>();
 		LinkedList<Node> finalNodes = pg.finalNodes;
-		LinkedList<Node> allNodes = pg.nodes;
 		LinkedList<Node> nodeQueue = new LinkedList<Node>();
 		Node s = pg.initialNode; 
 		nodeQueue.add(s);
@@ -59,9 +58,9 @@ public class GraphTraversal {
 		//Travel
 		while(nodeQueue.size() != 0) {
 			s = nodeQueue.poll();		
-			CompeteNodeSequence.add(s);
+			CompeteNodeSequence.add(new NodeAndVariable(s, var));
 			if(s != pg.initialNode) {
-				addVariable(CompeteNodeSequence.get(nodeSequenceIndex-1),s, pg);
+				addVariable(CompeteNodeSequence.get(nodeSequenceIndex-1).node,s, pg);
 			}
 			if(!finalNodes.contains(s)) {
 				Node NextNode = evaluateEdge(s);
