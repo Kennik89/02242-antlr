@@ -22,18 +22,18 @@ public class PG {
 		pg.graphCheck();
 		
 
-		GraphTraversal gt = new GraphTraversal();
-		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
-		//inderholder sekvensen af noder der ogs� bliver print og pr node er der en liste over alle variables værdier
-
-
-		//så man kan se hvordan variablerne ændres udervejs.
-
-		DOSAnalysis DOS = new DOSAnalysis();
-		DOS.getAnalysisReportTable(route);
+//		GraphTraversal gt = new GraphTraversal();
+//		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
+//		//inderholder sekvensen af noder der ogs� bliver print og pr node er der en liste over alle variables værdier
+//
+//
+//		//så man kan se hvordan variablerne ændres udervejs.
+//
+//		DOSAnalysis DOS = new DOSAnalysis();
+//		DOS.getAnalysisReportTable(route);
 		
 		Analysis RD = new Analysis();
-		//RD.reachingDefinition(pg);
+		RD.reachingDefinition(pg);
 
 	}
 

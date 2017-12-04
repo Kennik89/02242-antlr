@@ -22,6 +22,7 @@ public class Graph {
 
 	public Node addInitialNode()	{
 		Node node = addNode();
+		nodes.add(node);
 		initialNode = node;
 
 		return node;
@@ -29,6 +30,7 @@ public class Graph {
 
 	public Node addFinalNode()	{
 		Node node = addNode();
+		nodes.add(node);
 		finalNodes.add(node);
 
 		return node;
@@ -127,17 +129,18 @@ public class Graph {
 	public LinkedList<Pair> getVariableCollection()	{
 		LinkedList<Pair> collection = new LinkedList<Pair>();
 		LinkedList<Pair> UnsortedCollection = new LinkedList<Pair>();
-		
+
 		for (Edge edge : edges) {
 			UnsortedCollection.addAll(getVariable(edge));
 		}
 
 		for (Pair thisVar : UnsortedCollection) {
-			if(newVariableIn(thisVar.getVariable(), UnsortedCollection))
+			if(newVariableIn(thisVar.getVariable(), collection))	{
 				System.out.println("Var added" + thisVar.toString());
 				collection.add(thisVar);
+			}
 		}
-		
+
 		return collection;
 
 	}
@@ -147,10 +150,7 @@ public class Graph {
 
 		if(thisEdge.getCode().matches("int(.*)"))	{
 			String[] split = thisEdge.getCode().split(" ");
-			if(newVariableIn(split[1], collection)) { 
-				collection.add(new Pair(split[1]));
-
-			}
+			collection.add(new Pair(split[1]));
 
 			return collection;
 
@@ -160,8 +160,6 @@ public class Graph {
 
 			String[] subsplit = split[1].split("[+-/&|\\*]");
 			for (String string : subsplit) {
-				if(newVariableIn(string, collection))
-					System.out.println("Pass coll here -" + string + "-");
 				collection.add(new Pair(string.replaceAll("\\s+","")));
 			}
 		}
@@ -169,14 +167,26 @@ public class Graph {
 	}
 
 	private boolean newVariableIn(String var, LinkedList<Pair> collection)	{
+		if(isInteger(var))	{
+			return false;
+		}
 		for (Pair thisPair : collection) {
 			if(thisPair.getVariable().equals(var))	{
 				return false;
 			}
 		}
-		
+
 		return true;
 
+	}
+
+	private boolean isInteger(String var) {
+		try {
+			Integer.parseInt(var); 
+			return true;
+		}catch(NumberFormatException  e) {
+			return false;
+		}
 	}
 
 }
