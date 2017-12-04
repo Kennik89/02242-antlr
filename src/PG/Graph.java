@@ -144,7 +144,7 @@ public class Graph {
 		
 		if(thisEdge.getCode().matches("int(.*)"))	{
 			String[] split = thisEdge.getCode().split(" ");
-			if(true) { // skal stå et eller andet som undgår dub.
+			if(!collection.contains(split[1])) { 
 				collection.add(new Pair(split[1]));
 				
 			}
@@ -157,7 +157,8 @@ public class Graph {
 			
 			String[] subsplit = split[1].split("[+-/&|\\*]");
 			for (String string : subsplit) {
-				collection.add(new Pair(string.replaceAll("\\s+","")));
+				if(!collection.contains(string))
+					collection.add(new Pair(string.replaceAll("\\s+","")));
 			}
 		}
 		return collection;
