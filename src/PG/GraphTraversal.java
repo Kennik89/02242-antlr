@@ -16,15 +16,16 @@ public class GraphTraversal {
 	Variables var = new Variables();
 	ScriptEngineManager SEM = new ScriptEngineManager();
 	ScriptEngine calculator = SEM.getEngineByName("JavaScript");
-
-	public void addVariable(Node node1, Node node2, Graph pg) throws NumberFormatException, ScriptException {
+	LinkedList<NodeAndVariable> CompeteNodeSequence = new LinkedList<NodeAndVariable>();
+	
+	public void addVariable(Node node1, Node node2, Graph pg, int nodeSequenceIndex) throws NumberFormatException, ScriptException {
 		Edge e = pg.getEdgeBetween(node1, node2);
 		//der skal addes hvis kanten indeholde:
 		//int x
 		//int A[n];
 		if(e.code.contains("int")) {
 			String[] leftAndRight = e.code.split(" ");			
-			var.addVariable(new SingleVariable(leftAndRight[1], 0));	
+			CompeteNodeSequence.get(nodeSequenceIndex).var.addVariable(new SingleVariable(leftAndRight[1], 0));	
 		}
 
 		//der skal kun opdateres hvis kanten indeholder:
@@ -37,20 +38,38 @@ public class GraphTraversal {
 			String leftSide = leftAndRight[0].replaceAll(" ", "");
 			String rightSide = leftAndRight[1].replaceAll(" ", "");
 			//går igennem højre side og erstatter bogstaver med variabler
-			for (int i = 0; i < rightSide.length(); i++) {
-				if(Character.isLetter(rightSide.charAt(i))) {
-					rightSide = rightSide.replaceAll(Character.toString(rightSide.charAt(i)), 
-							Integer.toString(var.findValueOfVariable(Character.toString(rightSide.charAt(i)))));
+			for (int i = 0; i < CompeteNodeSequence.get(nodeSequenceIndex).var.size(); i++) {
+				if(rightSide.contains(CompeteNodeSequence.get(nodeSequenceIndex).var.getVariable(i).name)) {
+					String replaceVar = CompeteNodeSequence.get(nodeSequenceIndex).var.getVariable(i).name;
+					if(rightSide.contains("[")) {
+						replaceVar = replaceVar.replace("[", "");
+						replaceVar = replaceVar.replace("]", "");
+						rightSide = rightSide.replace("[", "");
+						rightSide = rightSide.replace("]", "");
+					}
+					rightSide = rightSide.replaceAll(replaceVar,
+							Integer.toString(CompeteNodeSequence.get(nodeSequenceIndex).var.
+									findValueOfVariable(CompeteNodeSequence.get(nodeSequenceIndex).var.getVariable(i).name)));
 				}
 			}
-			var.addValueToVariable(leftSide, Integer.parseInt(calculator.eval(rightSide).toString()));
+
+			for (int i = nodeSequenceIndex; i < CompeteNodeSequence.size(); i++) {
+
+				
+				for (int j = 0; j < CompeteNodeSequence.get(i).var.size(); j++) {
+					if(CompeteNodeSequence.get(i).var.getVariable(j).name.equals(leftSide)) {						
+						CompeteNodeSequence.get(i).var.getVariable(j).value = Integer.parseInt(calculator.eval(rightSide).toString());
+					}
+				}
+			
+			}
 		} 
 	}
 
 	public LinkedList<NodeAndVariable> graphWalker(Graph pg) throws NumberFormatException, ScriptException {
 		System.out.println("\nNode sequence and variables:");
+
 		
-		LinkedList<NodeAndVariable> CompeteNodeSequence = new LinkedList<NodeAndVariable>();
 		LinkedList<Node> finalNodes = pg.finalNodes;
 		LinkedList<Node> nodeQueue = new LinkedList<Node>();
 		Node s = pg.initialNode; 
@@ -62,14 +81,14 @@ public class GraphTraversal {
 			s = nodeQueue.poll();		
 			CompeteNodeSequence.add(new NodeAndVariable(s, var));
 			if(s != pg.initialNode) {
-				addVariable(CompeteNodeSequence.get(nodeSequenceIndex-1).node,s, pg);
+				addVariable(CompeteNodeSequence.get(nodeSequenceIndex-1).node,s, pg,nodeSequenceIndex);
 			}
 			if(!finalNodes.contains(s)) {
 				Node NextNode = evaluateEdge(s);
 				nodeQueue.add(NextNode);
 			}
-			
-			System.out.println(s.getLabel() + " : " + var.allVariables());
+
+			System.out.println(s.getLabel() + " : " + CompeteNodeSequence.get(nodeSequenceIndex).var.allVariables());
 			nodeSequenceIndex++;
 		}
 		return CompeteNodeSequence;

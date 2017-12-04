@@ -32,6 +32,7 @@ public class Variables {
 		for (int i = 0; i < variables.size(); i++) {
 			if(variables.get(i).name.equals(name)) {
 				variables.get(i).value = value;
+				return;
 			}
 		}
 	}

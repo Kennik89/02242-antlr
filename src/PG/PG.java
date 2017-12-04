@@ -15,8 +15,9 @@ public class PG {
 	public static void main(String args[] ) throws NumberFormatException, ScriptException {
 		/* v�lg kun en nedenst�ende methode, resten skal udkommenteres */
 		//test1();
-		test2();
-		//graph1();
+		//test2();
+		//test3();
+		graph1();
 		//graph2();
 
 		pg.graphCheck();
@@ -66,6 +67,20 @@ public class PG {
 		pg.addEdge(q4, q5, "c := 1");
 		pg.addEdge(q5, q6, "int z");
 		pg.addEdge(q6, q7, "z := x - a * b / c");
+		
+	}
+	
+	private static void test3() {
+		Node q0 = pg.addInitialNode();
+		Node q1 = pg.addNode();
+		Node q2 = pg.addNode();
+		Node q3 = pg.addNode();
+		Node q4 = pg.addFinalNode();
+		
+		pg.addEdge(q0, q1, "int A[]");
+		pg.addEdge(q1, q2, "A[] := -3");
+		pg.addEdge(q2, q3, "A[] := A[] + 3");
+		pg.addEdge(q3, q4, "A[] := A[] + 4");
 		
 	}
 
