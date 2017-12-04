@@ -1,6 +1,5 @@
 package PG;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import Variables.Pair;
@@ -189,4 +188,14 @@ public class Graph {
 		}
 	}
 
+	public void printGraph() {
+		for (Node node : nodes) {
+			System.out.println(node.toString());
+		}
+		for (Edge edge : edges) {
+			System.out.println(edge.toString());
+		}
+
+	}
+	
 }
