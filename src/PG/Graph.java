@@ -85,20 +85,18 @@ public class Graph {
 	public void graphCheck()	{
 		if(!(initialNode.equals(null)))	{
 			LinkedList<Node> unvisitedNodes = nodes;
+			LinkedList<Edge> unvisitedEdges = edges; 
 			LinkedList<Node> postNodes = new LinkedList<Node>();
 			postNodes.add(initialNode);
 			Node thisNode;
 
 			while(!postNodes.isEmpty()) {
 				thisNode = postNodes.pop();
-				System.out.println(thisNode.getLabel());
 				unvisitedNodes.remove(thisNode);
 				for(Edge edge : edges)	{
 					if(unvisitedNodes.contains(edge.getTo()) & !postNodes.contains(edge.getTo()))	{
 						postNodes.add(edge.getTo());
-						System.out.println(thisNode.toString() + " " + edge.toString());
 					}
-
 				}
 			}
 			System.out.println("Unvisited nodes: " + unvisitedNodes.size());

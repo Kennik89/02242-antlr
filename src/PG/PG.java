@@ -103,8 +103,6 @@ public class PG {
 		pg.addEdge(q2, q3, "3 < x");		//while laves som et if loop og skal altid stadig have else
 		pg.addEdge(q3, q2, "x := x - 1");
 		pg.addEdge(q2, q4, "x <= 3");	//else
-
-
 	}
 
 
