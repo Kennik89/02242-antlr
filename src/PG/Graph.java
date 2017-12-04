@@ -3,6 +3,8 @@ package PG;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import Variables.Pair;
+
 public class Graph {
 	
 	LinkedList<Node> nodes = new LinkedList<Node>();
@@ -80,9 +82,9 @@ public class Graph {
 	}
 	
 	public void graphCheck()	{
-		if(!initialNode.equals(null))	{
+		if(!(initialNode.equals(null)))	{
 			LinkedList<Node> unvisitedNodes = nodes;
-			LinkedList<Node> postNodes = null;
+			LinkedList<Node> postNodes = new LinkedList<Node>();
 			postNodes.add(initialNode);
 			Node thisNode;
 			
@@ -97,6 +99,7 @@ public class Graph {
 						
 				}
 			}
+			System.out.println("Unvisited nodes: " + unvisitedNodes.size());
 		}else {
 			System.out.println("Missing an initial node");
 		}
@@ -108,6 +111,43 @@ public class Graph {
 				return edges.get(i);
 			}
 		}
+		return null;
+	}
+	
+	public LinkedList<Edge> getPostEdgeIn(Node node) {
+		LinkedList<Edge> collection = new LinkedList<Edge>();
+		for(Edge edge : edges) {
+			if (edge.from.equals(node)){
+				collection.add(edge);
+			}
+		}
+		return collection;
+	}
+	
+	public LinkedList<Pair> getVariableCollection()	{
+		LinkedList<Pair> collection = new LinkedList<Pair>();
+		LinkedList<Edge> edgesToCheck = edges;
+		Edge thisEdge;
+		
+		while(!edgesToCheck.isEmpty())	{
+			thisEdge = edgesToCheck.pop();
+			if(thisEdge.getCode().matches("int(.*)"))	{
+				String[] split = thisEdge.getCode().split(" ");
+				collection.add(new Pair(split[1]));
+			}else if(thisEdge.getCode().matches("(.*):=(.*)")) {
+				//TODO add ? if new, else do nothing
+				collection.add(new Pair(getVariable(thisEdge))); // add ?
+			}
+			
+		}
+		
+		
+		return collection;
+		
+	}
+
+	private String getVariable(Edge thisEdge) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	
