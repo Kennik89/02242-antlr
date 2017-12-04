@@ -48,6 +48,8 @@ public class GraphTraversal {
 	}
 
 	public LinkedList<NodeAndVariable> graphWalker(Graph pg) throws NumberFormatException, ScriptException {
+		System.out.println("\nNode sequence and variables:");
+		
 		LinkedList<NodeAndVariable> CompeteNodeSequence = new LinkedList<NodeAndVariable>();
 		LinkedList<Node> finalNodes = pg.finalNodes;
 		LinkedList<Node> nodeQueue = new LinkedList<Node>();

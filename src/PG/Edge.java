@@ -26,7 +26,7 @@ class Edge {
 
 	@Override
 	public String toString() {
-		return super.toString() + " " + code;
+		return  code;
 	}
 	
 }
