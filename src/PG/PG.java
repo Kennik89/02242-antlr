@@ -4,12 +4,13 @@ import java.util.LinkedList;
 
 import javax.script.ScriptException;
 
+import DetectionOfSigns.DOSAnalysis;
+
 public class PG {
-
-
 
 	public static void main(String args[] ) throws NumberFormatException, ScriptException {
 		Graph pg = new Graph();
+		DOSAnalysis dosAnalysys = new DOSAnalysis();
 //		//If-loop example
 //		Node q0 = pg.addInitialNode(); // q0
 //		Node q1 = pg.addNode(); 
@@ -45,9 +46,7 @@ public class PG {
 		GraphTraversal gt = new GraphTraversal();
 
 		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
-		//inderholder sekvensen af noder der også bliver print og pr node er der en liste over alle variables værdier
-		//så man kan se hvordan variablerne ændres udervejs.
-
+		dosAnalysys.getAnalysisReportTable(route);
 
 	}
 }
