@@ -9,6 +9,16 @@ public class Variables {
 		variables.add(var);
 	}
 	
+	public int size() {
+		return variables.size();
+	}
+	
+	public SingleVariable getVariable(int i) {
+		return variables.get(i);
+	}
+	
+	
+	
 	public int findValueOfVariable(String name) {
 		for (int i = 0; i < variables.size(); i++) {
 			if(variables.get(i).name.equals(name)) {
@@ -37,6 +47,14 @@ public class Variables {
 		}
 		
 		return vars;
+	}
+	
+	public String[] getAllVariables() {
+		String[] res = new String[variables.size()];
+		for (int i = 0; i < variables.size(); i++) {
+			res[i] = variables.get(i).name;
+		}
+		return res;
 	}
 	
 }
