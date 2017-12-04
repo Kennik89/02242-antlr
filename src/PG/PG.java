@@ -20,9 +20,15 @@ public class PG {
 
 		pg.graphCheck();
 		
+<<<<<<< HEAD
 		GraphTraversal gt = new GraphTraversal();
 		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
 		//inderholder sekvensen af noder der ogs� bliver print og pr node er der en liste over alle variables værdier
+=======
+//		GraphTraversal gt = new GraphTraversal();
+//		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
+		//inderholder sekvensen af noder der ogs� bliver print og pr node er der en liste over alle variables værdier
+>>>>>>> master
 		//så man kan se hvordan variablerne ændres udervejs.
 
 		DOSAnalysis DOS = new DOSAnalysis();
@@ -40,7 +46,7 @@ public class PG {
 		Node q2 = pg.addFinalNode();
 		
 		pg.addEdge(q0, q1, "int x");
-		pg.addEdge(q1, q2, "z := x + y");
+		pg.addEdge(q1, q2, "z := x + y - a * b / c");
 		
 	}
 
