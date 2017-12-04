@@ -7,7 +7,7 @@ import javax.script.ScriptException;
 import ReachingDef.Analysis;
 
 public class PG {
-	public static Graph pg;
+	public static Graph pg = new Graph();
 	
 	public static void main(String args[] ) throws NumberFormatException, ScriptException {
 		/* vælg kun en nedenstående methode, resten skal udkommenteres */
@@ -37,7 +37,6 @@ public class PG {
 	}
 
 	private static void graph1() {
-		pg = new Graph();
 		//If-loop example
 		Node q0 = pg.addInitialNode(); // q0
 		Node q1 = pg.addNode(); 
