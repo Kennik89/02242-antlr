@@ -1,6 +1,6 @@
 package PG;
 
-class Node {
+public class Node {
 	
 	private String label;
 	private Edge edgeOut_1 = null;
@@ -17,7 +17,7 @@ class Node {
 		
 	}
 	
-	public Edge[] getEgdes() {
+	public Edge[] getEdges() {
 		Edge[] edges = new Edge[2];
 		edges[0] = edgeOut_1;
 		edges[1] = edgeOut_2;
