@@ -14,7 +14,7 @@ public class DOSAnalysis {
 
 	public void getAnalysisReportTable(LinkedList<NodeAndVariable> route) {
 		Results analysisResults = new Results(route.get(route.size()-1).var.getAllVariables());
-		System.out.println("\nDetection of sign analysis: \n");
+		System.out.println("\nDetection of sign analysis:");
 
 		for (int i = 0; i < route.size(); i++) {
 			for (int j = 0; j < route.get(i).var.getAllVariables().length; j++) {

@@ -14,21 +14,19 @@ public class PG {
 	
 	public static void main(String args[] ) throws NumberFormatException, ScriptException {
 		/* v�lg kun en nedenst�ende methode, resten skal udkommenteres */
-		test1();
+		//test1();
+		test2();
 		//graph1();
 		//graph2();
 
 		pg.graphCheck();
 		
-<<<<<<< HEAD
+
 		GraphTraversal gt = new GraphTraversal();
 		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
 		//inderholder sekvensen af noder der ogs� bliver print og pr node er der en liste over alle variables værdier
-=======
-//		GraphTraversal gt = new GraphTraversal();
-//		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
-		//inderholder sekvensen af noder der ogs� bliver print og pr node er der en liste over alle variables værdier
->>>>>>> master
+
+
 		//så man kan se hvordan variablerne ændres udervejs.
 
 		DOSAnalysis DOS = new DOSAnalysis();
@@ -47,6 +45,27 @@ public class PG {
 		
 		pg.addEdge(q0, q1, "int x");
 		pg.addEdge(q1, q2, "z := x + y - a * b / c");
+		
+	}
+	
+	private static void test2() {
+		Node q0 = pg.addInitialNode();
+		Node q1 = pg.addNode();
+		Node q2 = pg.addNode();
+		Node q3 = pg.addNode();
+		Node q4 = pg.addNode();
+		Node q5 = pg.addNode();
+		Node q6 = pg.addNode();
+		Node q7 = pg.addFinalNode();
+		
+		pg.addEdge(q0, q1, "int x");
+		
+		pg.addEdge(q1, q2, "int a");
+		pg.addEdge(q2, q3, "int b");
+		pg.addEdge(q3, q4, "int c");
+		pg.addEdge(q4, q5, "c := 1");
+		pg.addEdge(q5, q6, "int z");
+		pg.addEdge(q6, q7, "z := x - a * b / c");
 		
 	}
 
