@@ -14,10 +14,14 @@ public class Analysis {
 		LinkedList<Pair> results = new LinkedList<Pair>();
 		
 		results = graph.getVariableCollection();
+		for (Node node : graph.getNodes()) {
+			System.out.println("TEST: " + node.getLabel());
+		}
 		
 		System.out.println("STATE:");
 		Node thisNode;
 		currentNodes.addAll(graph.getNodes());
+		
 		while(!(currentNodes.isEmpty()))	{
 			/* Update the working list and print the initial result*/
 			thisNode = currentNodes.pop();

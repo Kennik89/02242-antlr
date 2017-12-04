@@ -15,8 +15,8 @@ public class PG {
 	public static void main(String args[] ) throws NumberFormatException, ScriptException {
 		/* v�lg kun en nedenst�ende methode, resten skal udkommenteres */
 		//test1();
-		test2();
-		//graph1();
+		//test2();
+		graph1();
 		//graph2();
 
 		pg.graphCheck();
