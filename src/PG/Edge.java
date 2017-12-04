@@ -26,7 +26,7 @@ class Edge {
 
 	@Override
 	public String toString() {
-		return  code;
+		return  "From node: " + from.getLabel() + " " + code + " To Node: " + to.getLabel();
 	}
 	
 }

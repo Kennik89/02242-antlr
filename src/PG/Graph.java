@@ -1,6 +1,5 @@
 package PG;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import Variables.Pair;
@@ -86,20 +85,18 @@ public class Graph {
 	public void graphCheck()	{
 		if(!(initialNode.equals(null)))	{
 			LinkedList<Node> unvisitedNodes = nodes;
+			LinkedList<Edge> unvisitedEdges = edges; 
 			LinkedList<Node> postNodes = new LinkedList<Node>();
 			postNodes.add(initialNode);
 			Node thisNode;
 
 			while(!postNodes.isEmpty()) {
 				thisNode = postNodes.pop();
-				System.out.println(thisNode.getLabel());
 				unvisitedNodes.remove(thisNode);
 				for(Edge edge : edges)	{
 					if(unvisitedNodes.contains(edge.getTo()) & !postNodes.contains(edge.getTo()))	{
 						postNodes.add(edge.getTo());
-						System.out.println(thisNode.toString() + " " + edge.toString());
 					}
-
 				}
 			}
 			System.out.println("Unvisited nodes: " + unvisitedNodes.size());
@@ -149,19 +146,22 @@ public class Graph {
 	private LinkedList<Pair> getVariable(Edge thisEdge) {
 		LinkedList<Pair> collection = new LinkedList<Pair>();
 
-		if(thisEdge.getCode().matches("int(.*)"))	{
+		if(thisEdge.getCode().matches("int(.*)]"))	{
 			String[] split = thisEdge.getCode().split(" ");
-			collection.add(new Pair(split[1]));
+			collection.add(new Pair(split[1].substring(0, split[1].length()-2)+"]")); // extract A[]
+			
+		}else if(thisEdge.getCode().matches("int(.*)")) {
+			String[] split = thisEdge.getCode().split(" ");
+			collection.add(new Pair(split[1]));	// extract x
 
-			return collection;
-
+			
 		}else if(thisEdge.getCode().matches("(.*):=(.*)")) {
 			String[] split = thisEdge.getCode().split(" := ");
-			collection.add(new Pair(split[0]));
+			collection.add(new Pair(split[0])); // extract left side
 
 			String[] subsplit = split[1].split("[+-/&|\\*]");
 			for (String string : subsplit) {
-				collection.add(new Pair(string.replaceAll("\\s+","")));
+				collection.add(new Pair(string.replaceAll("\\s+",""))); // extract right side for all variables
 			}
 		}
 		return collection;
@@ -190,4 +190,14 @@ public class Graph {
 		}
 	}
 
+	public void printGraph() {
+		for (Node node : nodes) {
+			System.out.println(node.toString());
+		}
+		for (Edge edge : edges) {
+			System.out.println(edge.toString());
+		}
+
+	}
+	
 }
