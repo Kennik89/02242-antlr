@@ -12,26 +12,23 @@ public class Analysis {
 		LinkedList<Node> currentNodes = new LinkedList<Node>();
 		LinkedList<Node> pendingNodes = new LinkedList<Node>();
 		LinkedList<Pair> results = new LinkedList<Pair>();
+		
 		results = graph.getVariableCollection();
-		System.out.println("STATE: qs");
-		for (Pair pair : results) {
-			System.out.println(pair.toString());
-		}
+		
+		System.out.println("STATE:");
 		Node thisNode;
-		
-		
-		
 		currentNodes.addAll(graph.getNodes());
-		
-		
-		while(!currentNodes.isEmpty())	{
-			/* Update the working list */
+		while(!(currentNodes.isEmpty()))	{
+			/* Update the working list and print the initial result*/
 			thisNode = currentNodes.pop();
-			System.out.println(thisNode.getLabel());
-			
-			
+			System.out.print(thisNode.getLabel() + ": ");
+			for (Pair pair : results) {
+				System.out.print(pair.toString() + " ");
+			}
+			System.out.println();
 			
 			//TODO analysis this node
+			
 			
 			//TODO add new label in pendingNodes
 			

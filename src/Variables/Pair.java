@@ -5,25 +5,29 @@ import PG.Node;
 public class Pair {
 	
 	private String variable;
-	private String nodeLabel;
+	private String label;
 
-	public Pair(String variable, String nodeLabel)	{
+	public Pair(String variable, String label)	{
 		this.variable = variable;
-		this.nodeLabel = nodeLabel;
+		this.label = label;
 	}
 	
 	public Pair(String split)	{
 		this.variable = split;
-		this.nodeLabel = "?";
+		this.label = "?";
 	}
 
-	public void setPairLabel(String nodeLabel)	{
-		this.nodeLabel = nodeLabel;
+	public String getVariable() {
+		return variable;
+	}
+	
+	public void setPairLabel(String label)	{
+		this.label = label;
 	}
 	
 	@Override
 	public String toString() {
-		return "(" + variable + "," + nodeLabel + ")";
+		return "(" + variable + "," + label + ")";
 	}
 	
 }
