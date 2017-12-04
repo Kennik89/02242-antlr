@@ -22,7 +22,7 @@ public class Graph {
 
 	public Node addInitialNode()	{
 		Node node = addNode();
-		nodes.add(node);
+//		nodes.add(node);
 		initialNode = node;
 
 		return node;
@@ -30,7 +30,7 @@ public class Graph {
 
 	public Node addFinalNode()	{
 		Node node = addNode();
-		nodes.add(node);
+//		nodes.add(node);
 		finalNodes.add(node);
 
 		return node;
@@ -44,7 +44,7 @@ public class Graph {
 		return edge;
 
 	}
-
+/*
 	public Edge addEdge(String _from, String _to, String code)	{
 		Node from = null;
 		Node to = null;
@@ -57,7 +57,7 @@ public class Graph {
 				break;
 		}
 		return addEdge(from, to, code);
-	}
+	}*/
 
 	public void setInitialNode(Node node)	{
 		initialNode = node;
@@ -92,6 +92,7 @@ public class Graph {
 
 			while(!postNodes.isEmpty()) {
 				thisNode = postNodes.pop();
+				System.out.println(thisNode.getLabel());
 				unvisitedNodes.remove(thisNode);
 				for(Edge edge : edges)	{
 					if(unvisitedNodes.contains(edge.getTo()) & !postNodes.contains(edge.getTo()))	{
