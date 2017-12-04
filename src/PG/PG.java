@@ -13,7 +13,7 @@ public class PG {
 	public static Graph pg = new Graph();
 	
 	public static void main(String args[] ) throws NumberFormatException, ScriptException {
-		/* vælg kun en nedenstående methode, resten skal udkommenteres */
+		/* vï¿½lg kun en nedenstï¿½ende methode, resten skal udkommenteres */
 		test1();
 		//graph1();
 		//graph2();
@@ -22,11 +22,14 @@ public class PG {
 		
 		GraphTraversal gt = new GraphTraversal();
 		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
-		//inderholder sekvensen af noder der også bliver print og pr node er der en liste over alle variables vÃ¦rdier
+		//inderholder sekvensen af noder der ogsï¿½ bliver print og pr node er der en liste over alle variables vÃ¦rdier
 		//sÃ¥ man kan se hvordan variablerne Ã¦ndres udervejs.
 
+		DOSAnalysis DOS = new DOSAnalysis();
+		DOS.getAnalysisReportTable(route);
+		
 		Analysis RD = new Analysis();
-		RD.reachingDefinition(pg);
+		//RD.reachingDefinition(pg);
 
 	}
 
