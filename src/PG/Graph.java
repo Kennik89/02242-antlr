@@ -146,19 +146,22 @@ public class Graph {
 	private LinkedList<Pair> getVariable(Edge thisEdge) {
 		LinkedList<Pair> collection = new LinkedList<Pair>();
 
-		if(thisEdge.getCode().matches("int(.*)"))	{
+		if(thisEdge.getCode().matches("int(.*)]"))	{
 			String[] split = thisEdge.getCode().split(" ");
-			collection.add(new Pair(split[1]));
+			collection.add(new Pair(split[1].substring(0, split[1].length()-2)+"]")); // extract A[]
+			
+		}else if(thisEdge.getCode().matches("int(.*)")) {
+			String[] split = thisEdge.getCode().split(" ");
+			collection.add(new Pair(split[1]));	// extract x
 
-			return collection;
-
+			
 		}else if(thisEdge.getCode().matches("(.*):=(.*)")) {
 			String[] split = thisEdge.getCode().split(" := ");
-			collection.add(new Pair(split[0]));
+			collection.add(new Pair(split[0])); // extract left side
 
 			String[] subsplit = split[1].split("[+-/&|\\*]");
 			for (String string : subsplit) {
-				collection.add(new Pair(string.replaceAll("\\s+","")));
+				collection.add(new Pair(string.replaceAll("\\s+",""))); // extract right side for all variables
 			}
 		}
 		return collection;

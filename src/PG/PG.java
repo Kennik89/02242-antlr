@@ -14,13 +14,13 @@ public class PG {
 	
 	public static void main(String args[] ) throws NumberFormatException, ScriptException {
 		/* v�lg kun en nedenst�ende methode, resten skal udkommenteres */
-		//test1();
+		test1();
 		//test2();
-		graph1();
+		//graph1();
 		//graph2();
 
 		//pg.graphCheck();
-		pg.printGraph();
+		//pg.printGraph();
 
 //		GraphTraversal gt = new GraphTraversal();
 //		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
@@ -41,10 +41,12 @@ public class PG {
 	private static void test1() {
 		Node q0 = pg.addInitialNode();
 		Node q1 = pg.addNode();
-		Node q2 = pg.addFinalNode();
+		Node q2 = pg.addNode();
+		Node q3 = pg.addFinalNode();
 		
 		pg.addEdge(q0, q1, "int x");
-		pg.addEdge(q1, q2, "int x");
+		pg.addEdge(q1, q2, "int A[n]");
+		pg.addEdge(q2, q3, "z := x + 1");
 		
 	}
 	
