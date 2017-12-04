@@ -13,7 +13,10 @@ public class Analysis {
 		LinkedList<Node> results = new LinkedList<Node>();
 		Node thisNode;
 		
+		
+		
 		currentNodes.addAll(graph.getNodes());
+		
 		
 		while(!currentNodes.isEmpty())	{
 			/* Update the working list */

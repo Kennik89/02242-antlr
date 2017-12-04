@@ -3,6 +3,8 @@ package PG;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import Variables.Pair;
+
 public class Graph {
 	
 	LinkedList<Node> nodes = new LinkedList<Node>();
@@ -109,6 +111,42 @@ public class Graph {
 			}
 		}
 		return null;
+	}
+	
+	public LinkedList<Edge> getPreEdgeIn(Node node) {
+		LinkedList<Edge> collection = null;
+		for(Edge edge : edges) {
+			if (edge.to.equals(node)){
+				collection.add(edge);
+			}
+		}
+		return collection;
+	}
+	
+	public ArrayList<Pair> getVariableCollection()	{
+		ArrayList<Pair> collection = new ArrayList<Pair>();
+		LinkedList<Edge> edgesToCheck = null;
+		LinkedList<Node> nonVisitedNodes = nodes;
+		for(Node node : finalNodes)
+			edgesToCheck.addAll(getPreEdgeIn(node));
+		
+		Edge thisEdge;
+		while(!edgesToCheck.isEmpty())	{
+			thisEdge = edgesToCheck.pop();
+			if(thisEdge.getCode().matches("int(*.)"))	{
+				
+			}
+			collection.add(new Pair(getVariable(thisEdge)));
+		}
+		
+		
+		return null;
+		
+	}
+
+	private char getVariable(Edge thisEdge) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }
