@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 import javax.script.ScriptException;
 
+import ReachingDef.Analysis;
+
 public class PG {
 	public static Graph pg;
 	
@@ -47,6 +49,8 @@ public class PG {
 		//inderholder sekvensen af noder der ogs� bliver print og pr node er der en liste over alle variables værdier
 		//så man kan se hvordan variablerne ændres udervejs.
 
+		Analysis RD = new Analysis();
+		RD.reachingDefinition(pg);
 
 	}
 	

@@ -5,24 +5,21 @@ import java.util.LinkedList;
 import PG.*;
 
 public class Analysis {
-	
-	public static void main(String[] args) {
-		Graph graph = PG.pg;
-		reachingDefinition(graph);
-	}
 
-	private static void reachingDefinition(Graph g)	{
+	public void reachingDefinition(Graph graph)	{
+		System.out.println("--- RD Analysis initialised ---");
 		LinkedList<Node> currentNodes = new LinkedList<Node>();
 		LinkedList<Node> pendingNodes = new LinkedList<Node>();
-		LinkedList<Node> visitedNodes = new LinkedList<Node>();
+		LinkedList<Node> results = new LinkedList<Node>();
 		Node thisNode;
 		
-		currentNodes.addAll(g.getNodes());
+		currentNodes.addAll(graph.getNodes());
 		
 		while(!currentNodes.isEmpty())	{
+			/* Update the working list */
 			thisNode = currentNodes.pop();
 			System.out.println(thisNode.getLabel());
-			visitedNodes.add(thisNode);
+			
 			
 			
 			//TODO analyse this node
