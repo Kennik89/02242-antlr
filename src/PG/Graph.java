@@ -131,24 +131,37 @@ public class Graph {
 		
 		while(!edgesToCheck.isEmpty())	{
 			thisEdge = edgesToCheck.pop();
-			if(thisEdge.getCode().matches("int(.*)"))	{
-				String[] split = thisEdge.getCode().split(" ");
-				collection.add(new Pair(split[1]));
-			}else if(thisEdge.getCode().matches("(.*):=(.*)")) {
-				//TODO add ? if new, else do nothing
-				collection.add(new Pair(getVariable(thisEdge))); // add ?
-			}
+			collection.addAll(getVariable(thisEdge));
 			
 		}
-		
 		
 		return collection;
 		
 	}
 
-	private String getVariable(Edge thisEdge) {
-		// TODO Auto-generated method stub
-		return null;
+	private LinkedList<Pair> getVariable(Edge thisEdge) {
+		LinkedList<Pair> collection = new LinkedList<Pair>();
+		
+		if(thisEdge.getCode().matches("int(.*)"))	{
+			String[] split = thisEdge.getCode().split(" ");
+			if(!collection.contains(split[1])) { 
+				collection.add(new Pair(split[1]));
+				
+			}
+			
+			return collection;
+			
+		}else if(thisEdge.getCode().matches("(.*):=(.*)")) {
+			String[] split = thisEdge.getCode().split(" := ");
+			collection.add(new Pair(split[0]));
+			
+			String[] subsplit = split[1].split("[+-/&|\\*]");
+			for (String string : subsplit) {
+				if(!collection.contains(string))
+					collection.add(new Pair(string.replaceAll("\\s+","")));
+			}
+		}
+		return collection;
 	}
 	
 }
