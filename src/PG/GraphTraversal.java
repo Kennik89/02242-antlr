@@ -75,7 +75,7 @@ public class GraphTraversal {
 
 	public Node evaluateEdge(Node n) {
 		Node nextNode = null;
-		Edge[] edges = n.getEgdes();
+		Edge[] edges = n.getEdges();
 		boolean evaluationOfEdge1 = false;
 		boolean evaluationOfEdge2 = false;
 
