@@ -82,9 +82,9 @@ public class Graph {
 	}
 	
 	public void graphCheck()	{
-		if(!initialNode.equals(null))	{
+		if(!(initialNode.equals(null)))	{
 			LinkedList<Node> unvisitedNodes = nodes;
-			LinkedList<Node> postNodes = null;
+			LinkedList<Node> postNodes = new LinkedList<Node>();
 			postNodes.add(initialNode);
 			Node thisNode;
 			
@@ -99,6 +99,7 @@ public class Graph {
 						
 				}
 			}
+			System.out.println("Unvisited nodes: " + unvisitedNodes.size());
 		}else {
 			System.out.println("Missing an initial node");
 		}
@@ -113,40 +114,41 @@ public class Graph {
 		return null;
 	}
 	
-	public LinkedList<Edge> getPreEdgeIn(Node node) {
-		LinkedList<Edge> collection = null;
+	public LinkedList<Edge> getPostEdgeIn(Node node) {
+		LinkedList<Edge> collection = new LinkedList<Edge>();
 		for(Edge edge : edges) {
-			if (edge.to.equals(node)){
+			if (edge.from.equals(node)){
 				collection.add(edge);
 			}
 		}
 		return collection;
 	}
 	
-	public ArrayList<Pair> getVariableCollection()	{
-		ArrayList<Pair> collection = new ArrayList<Pair>();
-		LinkedList<Edge> edgesToCheck = null;
-		LinkedList<Node> nonVisitedNodes = nodes;
-		for(Node node : finalNodes)
-			edgesToCheck.addAll(getPreEdgeIn(node));
-		
+	public LinkedList<Pair> getVariableCollection()	{
+		LinkedList<Pair> collection = new LinkedList<Pair>();
+		LinkedList<Edge> edgesToCheck = edges;
 		Edge thisEdge;
+		
 		while(!edgesToCheck.isEmpty())	{
 			thisEdge = edgesToCheck.pop();
-			if(thisEdge.getCode().matches("int(*.)"))	{
-				
+			if(thisEdge.getCode().matches("int(.*)"))	{
+				String[] split = thisEdge.getCode().split(" ");
+				collection.add(new Pair(split[1]));
+			}else if(thisEdge.getCode().matches("(.*):=(.*)")) {
+				//TODO add ? if new, else do nothing
+				collection.add(new Pair(getVariable(thisEdge))); // add ?
 			}
-			collection.add(new Pair(getVariable(thisEdge)));
+			
 		}
 		
 		
-		return null;
+		return collection;
 		
 	}
 
-	private char getVariable(Edge thisEdge) {
+	private String getVariable(Edge thisEdge) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 	
 }

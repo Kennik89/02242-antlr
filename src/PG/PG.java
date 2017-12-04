@@ -15,6 +15,7 @@ public class PG {
 		//graph1();
 		//graph2();
 
+		pg.graphCheck();
 		
 		GraphTraversal gt = new GraphTraversal();
 		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 

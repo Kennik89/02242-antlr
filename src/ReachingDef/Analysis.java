@@ -3,6 +3,7 @@ package ReachingDef;
 import java.util.LinkedList;
 
 import PG.*;
+import Variables.Pair;
 
 public class Analysis {
 
@@ -10,7 +11,11 @@ public class Analysis {
 		System.out.println("--- RD Analysis initialised ---");
 		LinkedList<Node> currentNodes = new LinkedList<Node>();
 		LinkedList<Node> pendingNodes = new LinkedList<Node>();
-		LinkedList<Node> results = new LinkedList<Node>();
+		LinkedList<Pair> results = new LinkedList<Pair>();
+		results = graph.getVariableCollection();
+		for (Pair pair : results) {
+			System.out.println(pair.toString());
+		}
 		Node thisNode;
 		
 		
@@ -25,7 +30,7 @@ public class Analysis {
 			
 			
 			
-			//TODO analyse this node
+			//TODO analysis this node
 			
 			//TODO add new label in pendingNodes
 			

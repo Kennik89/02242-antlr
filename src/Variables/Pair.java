@@ -4,21 +4,26 @@ import PG.Node;
 
 public class Pair {
 	
-	private char variale;
+	private String variable;
 	private String nodeLabel;
 
-	public Pair(char variable, String nodeLabel)	{
-		this.variale = variable;
+	public Pair(String variable, String nodeLabel)	{
+		this.variable = variable;
 		this.nodeLabel = nodeLabel;
 	}
 	
-	public Pair(char variable)	{
-		this.variale = variable;
+	public Pair(String split)	{
+		this.variable = split;
 		this.nodeLabel = "?";
 	}
 
 	public void setPairLabel(String nodeLabel)	{
 		this.nodeLabel = nodeLabel;
+	}
+	
+	@Override
+	public String toString() {
+		return "(" + variable + "," + nodeLabel + ")";
 	}
 	
 }
