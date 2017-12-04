@@ -37,7 +37,7 @@ public class PG {
 		Node q2 = pg.addFinalNode();
 		
 		pg.addEdge(q0, q1, "int x");
-		pg.addEdge(q1, q2, "z := x + y - a * b / c");
+		pg.addEdge(q1, q2, "int x");
 		
 	}
 

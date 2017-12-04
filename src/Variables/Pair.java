@@ -17,6 +17,10 @@ public class Pair {
 		this.nodeLabel = "?";
 	}
 
+	public String getVariable() {
+		return variable;
+	}
+	
 	public void setPairLabel(String nodeLabel)	{
 		this.nodeLabel = nodeLabel;
 	}

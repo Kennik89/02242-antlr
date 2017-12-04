@@ -13,6 +13,9 @@ public class Analysis {
 		LinkedList<Node> pendingNodes = new LinkedList<Node>();
 		LinkedList<Pair> results = new LinkedList<Pair>();
 		results = graph.getVariableCollection();
+		for (Pair pair : results) {
+			System.out.println(pair.toString());
+		}
 		System.out.println("STATE: qs");
 		for (Pair pair : results) {
 			System.out.println(pair.toString());
