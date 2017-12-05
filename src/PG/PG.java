@@ -14,8 +14,8 @@ public class PG {
 	
 	public static void main(String args[] ) throws NumberFormatException, ScriptException {
 		/* v�lg kun en nedenst�ende methode, resten skal udkommenteres */
-		test1();
-		//test2();
+		//test1();
+		test2();
 		//graph1();
 		//graph2();
 
@@ -33,7 +33,7 @@ public class PG {
 //		DOS.getAnalysisReportTable(route);
 		
 		Analysis RD = new Analysis();
-		RD.reachingDefinition(pg, true);
+		RD.reachingDefinition(pg);
 
 	}
 
@@ -61,7 +61,6 @@ public class PG {
 		Node q7 = pg.addFinalNode();
 		
 		pg.addEdge(q0, q1, "int x");
-		
 		pg.addEdge(q1, q2, "int a");
 		pg.addEdge(q2, q3, "int b");
 		pg.addEdge(q3, q4, "int c");
@@ -103,7 +102,7 @@ public class PG {
 		pg.addEdge(q0, q1, "int x");
 		pg.addEdge(q1, q2, "x := 2*5");  
 		pg.addEdge(q2, q3, "3 < x");		//while laves som et if loop og skal altid stadig have else
-		pg.addEdge(q3, q2, "x := x - 1");
+		pg.addEdge(q3, q2, "write x");
 		pg.addEdge(q2, q4, "x <= 3");	//else
 	}
 

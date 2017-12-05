@@ -34,6 +34,10 @@ public class Node {
 		return edges;
 	}
 	
+	public Edge[] getPreEdges()	{
+		return new Edge[]{edgeIn_1, edgeIn_2};
+	}
+	
 	public Node(int count)	{
 		this.label = count;
 	}

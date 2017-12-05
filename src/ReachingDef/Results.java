@@ -26,18 +26,20 @@ public class Results {
 	}
 	
 	public void print() {
+		System.out.print("{");
 		for (ResultVariable resultVariable : results) {
 			System.out.print(" " + resultVariable.toString());
 		}
+		System.out.println(" }");
 	}
 
-	public Results killGen(String leftside) {
+	public Results killGen(String leftside, int label) {
 		for (ResultVariable resultVariable : results) {
 			if (resultVariable.variable.equals(leftside)) {
 				results.remove(resultVariable);
 			} 
 		}
-		results.add(new ResultVariable(leftside));
+		results.add(new ResultVariable(leftside, label));
 		return this;
 	}
 	

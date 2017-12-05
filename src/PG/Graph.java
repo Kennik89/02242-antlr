@@ -39,7 +39,6 @@ public class Graph {
 	public Edge addEdge(Node from, Node to, String code)	{
 		Edge edge = new Edge(from, to, code);
 		edges.add(edge);
-		from.addEdge(edge);
 
 		return edge;
 
@@ -75,6 +74,10 @@ public class Graph {
 			}
 	}
 
+	public LinkedList<Node> getFinalNodes()	{
+		return finalNodes;
+	}
+	
 	public int numberOfEdges() {
 		return edges.size();
 	}

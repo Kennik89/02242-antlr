@@ -9,6 +9,11 @@ public class ResultVariable {
 		nodeID = "?";
 	}
 	
+	public ResultVariable(String variable, int nodeID) {
+		this.variable = variable;
+		this.nodeID = Integer.toString(nodeID);
+	}
+	
 	public String toString() {
 		return "(" + variable + "," + nodeID + ")";
 	}
