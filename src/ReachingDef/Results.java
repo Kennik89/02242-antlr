@@ -1,5 +1,6 @@
 package ReachingDef;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Results {
@@ -34,10 +35,17 @@ public class Results {
 	}
 
 	public Results killGen(String leftside, int label) {
-		for (ResultVariable resultVariable : results) {
+		Iterator<ResultVariable> iter = results.iterator();
+		ResultVariable resultVariable;
+		while (iter.hasNext()) {
+			resultVariable = iter.next();
 			if (resultVariable.variable.equals(leftside)) {
-				results.remove(resultVariable);
+				iter.remove();
 			} 
+		}
+		results.clear();
+		while(iter.hasNext()) {
+			results.add(iter.next());
 		}
 		results.add(new ResultVariable(leftside, label));
 		return this;
