@@ -17,8 +17,8 @@ public class PG {
 		
 		/* v�lg kun en nedenst�ende methode, resten skal udkommenteres */
 		//test1();
-		test2();
 		//test2();
+		test2();
 		//test3();
 		//graph1();
 		//graph2();
@@ -30,11 +30,11 @@ public class PG {
 //		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
 
 
-		DOSAnalysis DOS = new DOSAnalysis();
-		DOS.workListAlgorith(pg,initialVariables);
+//		DOSAnalysis DOS = new DOSAnalysis();
+//		DOS.workListAlgorith(pg,initialVariables);
 		
-//		Analysis RD = new Analysis();
-//		RD.reachingDefinition(pg);
+		Analysis RD = new Analysis();
+		RD.reachingDefinition(pg);
 
 	}
 
@@ -125,15 +125,9 @@ public class PG {
 		
 		pg.addEdge(q0, q1, "int x");
 		pg.addEdge(q1, q2, "x := 2*5");  
-<<<<<<< HEAD
-		pg.addEdge(q2, q3, "3 < x");		//while laves som et if loop og skal altid stadig have else
-		pg.addEdge(q3, q2, "write x");
-		pg.addEdge(q2, q4, "x <= 3");	//else
-=======
 		pg.addEdge(q2, q3, "3 <= x");		//while laves som et if loop og skal altid stadig have else
 		pg.addEdge(q3, q2, "x := x - 1");
 		pg.addEdge(q2, q4, "x < -1");	//else
->>>>>>> refs/remotes/origin/master
 	}
 
 

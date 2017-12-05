@@ -26,6 +26,7 @@ public class Analysis {
 			}
 			System.out.print(thisNode.toString() + ": "); results.print();
 
+;			pendingNodes.add(thisNode);
 			if(currentNodes.isEmpty() & flag) {
 				currentNodes = pendingNodes;
 				pendingNodes.clear();
