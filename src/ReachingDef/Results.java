@@ -11,4 +11,10 @@ public class Results {
 		}
 	}
 	
+	public void print() {
+		for (ResultVariable resultVariable : results) {
+			System.out.print(" " + resultVariable.toString());
+		}
+	}
+	
 }

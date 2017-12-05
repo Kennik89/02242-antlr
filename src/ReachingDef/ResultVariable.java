@@ -9,7 +9,7 @@ public class ResultVariable {
 		nodeID = "?";
 	}
 	
-	public String print() {
+	public String toString() {
 		return "(" + variable + "," + nodeID + ")";
 	}
 }

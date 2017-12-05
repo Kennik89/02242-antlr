@@ -2,19 +2,34 @@ package ReachingDef;
 
 import java.util.LinkedList;
 import PG.*;
-import Variables.Pair;
 
 public class Analysis {
 
-	Graph graph;
-	LinkedList<Pair>[] results;
-
 	public void reachingDefinition(Graph graph, boolean print)	{
+		LinkedList<Node> currentNodes = graph.getNodes();
+		LinkedList<Node> pendingNodes = new LinkedList<>();
 		Results analysisResults = new Results(variablecollection(graph));
+		Node thisNode = currentNodes.pop();
+		System.out.print(thisNode.toString() + ": "); analysisResults.print();
+		
+		while (!currentNodes.isEmpty()) {
+			thisNode = currentNodes.pop();
+			
+			
+		}
+		
 		
 	}
 
 
+	private void nodeAnalyse(Node node) {
+		// TODO Auto-generated method stub
+		// Kill each var in each edge and generate new var
+		// Union all input edges
+	}
+	
+	
+	
 	private LinkedList<String> variablecollection(Graph graph) {
 		LinkedList<String> allVariables = new LinkedList<String>();
 		for (Edge edge : graph.getEdges()) {
@@ -45,14 +60,6 @@ public class Analysis {
 		}else {
 			return null;
 		}
-	}
-
-	private void printState(Node thisNode) {
-		System.out.print(thisNode.getLabel() + ": ");
-		for (Pair pair : results[thisNode.getLabel()]) {
-			System.out.print(pair.toString() + " ");
-		}
-		System.out.println();
 	}
 
 }
