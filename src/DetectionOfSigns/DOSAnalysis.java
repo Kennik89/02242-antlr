@@ -329,7 +329,7 @@ public class DOSAnalysis {
 
 	public Node evaluateEdge(Node n) {
 		Node nextNode = null;
-		Edge[] edges = n.getEdges();
+		Edge[] edges = n.getPreEdges();
 		boolean evaluationOfEdge1 = false;
 		boolean evaluationOfEdge2 = false;
 
