@@ -8,12 +8,13 @@ public class Graph {
 
 	LinkedList<Node> nodes = new LinkedList<Node>();
 	LinkedList<Edge> edges = new LinkedList<Edge>();
+
 	Node initialNode;
 	LinkedList<Node> finalNodes = new LinkedList<Node>();
 
 	public Node addNode()	{
 		int count = nodes.size();
-		Node node = new Node("q" + count);
+		Node node = new Node(count);
 		nodes.add(node);
 
 		return node;
@@ -46,25 +47,23 @@ public class Graph {
 	public Edge addEdge(Node from, Node to, String code)	{
 		Edge edge = new Edge(from, to, code);
 		edges.add(edge);
-		from.addEdge(edge);
 
 		return edge;
 
 	}
-
-
+	
 	public void setInitialNode(Node node)	{
 		initialNode = node;
 	}
 
 	public void setInitialNode(String label)	{
 		for(Node node : nodes)
-			if(node.getLabel().equals(label))	{
+			if(node.getLabel() == Integer.parseInt(label))	{
 				initialNode = node;
 				return;
 			}
 	}
-
+	
 	public int numberOfEdges() {
 		return edges.size();
 	}
@@ -75,6 +74,10 @@ public class Graph {
 
 	public LinkedList<Node> getNodes() {
 		return nodes;
+	}
+	
+	public LinkedList<Edge> getEdges() {
+		return edges;
 	}
 
 	public void graphCheck()	{
@@ -124,7 +127,7 @@ public class Graph {
 		LinkedList<Pair> UnsortedCollection = new LinkedList<Pair>();
 
 		for (Edge edge : edges) {
-			UnsortedCollection.addAll(getVariable(edge));
+			UnsortedCollection.addAll(getPairs(edge));
 		}
 
 		for (Pair thisVar : UnsortedCollection) {
@@ -138,7 +141,7 @@ public class Graph {
 
 	}
 
-	private LinkedList<Pair> getVariable(Edge thisEdge) {
+	public LinkedList<Pair> getPairs(Edge thisEdge) {
 		LinkedList<Pair> collection = new LinkedList<Pair>();
 
 		if(thisEdge.getCode().matches("int(.*)]"))	{

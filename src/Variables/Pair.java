@@ -25,6 +25,14 @@ public class Pair {
 		this.label = label;
 	}
 	
+	public void setPairLabel(int label)	{
+		this.label = Integer.toString(label);
+	}
+	
+	public void setPair(Pair pair) {
+		this.label = pair.label;
+	}
+	
 	@Override
 	public String toString() {
 		return "(" + variable + "," + label + ")";
