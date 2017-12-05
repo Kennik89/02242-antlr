@@ -51,11 +51,6 @@ public class Graph {
 		return edge;
 
 	}
-
-
-	public Node getInitialNode() {
-		return initialNode;
-	}
 	
 	public void setInitialNode(Node node)	{
 		initialNode = node;
@@ -67,10 +62,6 @@ public class Graph {
 				initialNode = node;
 				return;
 			}
-	}
-
-	public LinkedList<Node> getFinalNodes()	{
-		return finalNodes;
 	}
 	
 	public int numberOfEdges() {
