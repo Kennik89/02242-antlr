@@ -10,6 +10,8 @@ public class Edge {
 		this.from = from;
 		this.to = to;
 		this.code = code;
+		from.addEdgeIn(this);
+		to.addEdgeOut(this);
 	}
 	
 	public Node getTo()	{
