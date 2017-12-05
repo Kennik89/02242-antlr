@@ -9,22 +9,19 @@ public class Analysis {
 
 	public void reachingDefinition(Graph graph)	{
 		System.out.println("--- RD Analysis initialised ---");
-		LinkedList<Node> currentNodes = new LinkedList<Node>();
-		LinkedList<Node> pendingNodes = new LinkedList<Node>();
+		LinkedList<Edge> currentEdges = new LinkedList<Edge>();
+		LinkedList<Edge> pendingEdges = new LinkedList<Edge>();
 		LinkedList<Pair> results = new LinkedList<Pair>();
 		
 		results = graph.getVariableCollection();
-		for (Node node : graph.getNodes()) {
-			System.out.println("TEST: " + node.getLabel());
-		}
 		
 		System.out.println("STATE:");
-		Node thisNode;
-		currentNodes.addAll(graph.getNodes());
+		Node thisNode = graph.getInitialNode();
+		currentEdges.addAll(graph.getedges());
 		
-		while(!(currentNodes.isEmpty()))	{
+		while(!(currentEdges.isEmpty()))	{
 			/* Update the working list and print the initial result*/
-			thisNode = currentNodes.pop();
+			thisNode = currentEdges.pop();
 			System.out.print(thisNode.getLabel() + ": ");
 			for (Pair pair : results) {
 				System.out.print(pair.toString() + " ");

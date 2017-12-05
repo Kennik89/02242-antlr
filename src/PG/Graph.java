@@ -58,6 +58,10 @@ public class Graph {
 		return addEdge(from, to, code);
 	}*/
 
+	public Node getInitialNode() {
+		return initialNode;
+	}
+	
 	public void setInitialNode(Node node)	{
 		initialNode = node;
 	}
