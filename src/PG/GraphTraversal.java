@@ -18,7 +18,8 @@ public class GraphTraversal {
 	ScriptEngine calculator = SEM.getEngineByName("JavaScript");
 	LinkedList<NodeAndVariable> CompeteNodeSequence = new LinkedList<NodeAndVariable>();
 	
-	public void addVariable(Node node1, Node node2, Graph pg, int nodeSequenceIndex) throws NumberFormatException, ScriptException {
+	public void addVariable(Node node1, Node node2, Graph pg, int nodeSequenceIndex)
+			throws NumberFormatException, ScriptException {
 		Edge e = pg.getEdgeBetween(node1, node2);
 		//der skal addes hvis kanten indeholde:
 		//int x
@@ -33,7 +34,6 @@ public class GraphTraversal {
 		// x := something
 		// A[a1] := a2
 		if(e.code.contains(":=")) {
-
 			String[] leftAndRight = e.code.split(":=");
 			String leftSide = leftAndRight[0].replaceAll(" ", "");
 			String rightSide = leftAndRight[1].replaceAll(" ", "");
@@ -68,14 +68,14 @@ public class GraphTraversal {
 
 	public LinkedList<NodeAndVariable> graphWalker(Graph pg) throws NumberFormatException, ScriptException {
 		System.out.println("\nNode sequence and variables:");
-
+		
 		
 		LinkedList<Node> finalNodes = pg.finalNodes;
 		LinkedList<Node> nodeQueue = new LinkedList<Node>();
 		Node s = pg.initialNode; 
 		nodeQueue.add(s);
 		int nodeSequenceIndex = 0;
-
+		
 		//Travel
 		while(nodeQueue.size() != 0) {
 			s = nodeQueue.poll();		
