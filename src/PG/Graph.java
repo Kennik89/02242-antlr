@@ -18,6 +18,14 @@ public class Graph {
 
 		return node;
 	}	
+	
+	public Node getInitialNode() {
+		return initialNode;
+	}
+	
+	public LinkedList<Node> getFinalNodes(){
+		return finalNodes;
+	}
 
 	public Node addInitialNode()	{
 		Node node = addNode();
@@ -43,20 +51,7 @@ public class Graph {
 		return edge;
 
 	}
-/*
-	public Edge addEdge(String _from, String _to, String code)	{
-		Node from = null;
-		Node to = null;
-		for(Node node : nodes) {
-			if(node.getLabel().equals(_from))
-				from = node;
-			else if(node.getLabel().equals(_to))
-				to = node;
-			if(from != null & to != null)
-				break;
-		}
-		return addEdge(from, to, code);
-	}*/
+
 
 	public void setInitialNode(Node node)	{
 		initialNode = node;
