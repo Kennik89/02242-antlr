@@ -33,7 +33,7 @@ public class PG {
 //		DOS.getAnalysisReportTable(route);
 		
 		Analysis RD = new Analysis();
-		RD.reachingDefinition(pg);
+		RD.reachingDefinition(pg, true);
 
 	}
 

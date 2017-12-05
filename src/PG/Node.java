@@ -2,9 +2,10 @@ package PG;
 
 public class Node {
 	
-	private String label;
+	private int label;
 	private Edge edgeOut_1 = null;
 	private Edge edgeOut_2 = null;
+	
 	
 	public void addEdge(Edge edge) {
 		if(edgeOut_1 == null) {
@@ -24,19 +25,19 @@ public class Node {
 		return edges;
 	}
 	
-	public Node(String label)	{
-		this.label = label;
+	public Node(int count)	{
+		this.label = count;
 	}
 
 	
-	public String getLabel() {
+	public int getLabel() {
 		return label;
 	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return label;
+		return "q" + label;
 	}
 	
 
