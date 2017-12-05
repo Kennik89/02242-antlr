@@ -17,9 +17,8 @@ public class PG {
 		
 		/* v�lg kun en nedenst�ende methode, resten skal udkommenteres */
 		//test1();
-		//test2();
-		//test2();
-		test3();
+		test2();
+		//test3();
 		//graph1();
 		//graph2();
 
@@ -30,11 +29,11 @@ public class PG {
 //		LinkedList<NodeAndVariable> route = gt.graphWalker(pg); 
 
 
-		DOSAnalysis DOS = new DOSAnalysis();
-		DOS.workListAlgorith(pg,initialVariables);
+//		DOSAnalysis DOS = new DOSAnalysis();
+//		DOS.workListAlgorith(pg,initialVariables);
 		
-//		Analysis RD = new Analysis();
-//		RD.reachingDefinition(pg);
+		Analysis RD = new Analysis();
+		RD.reachingDefinition(pg);
 
 	}
 

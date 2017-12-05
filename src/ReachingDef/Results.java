@@ -35,19 +35,15 @@ public class Results {
 	}
 
 	public Results killGen(String leftside, int label) {
-		Iterator<ResultVariable> iter = results.iterator();
-		ResultVariable resultVariable;
-		while (iter.hasNext()) {
-			resultVariable = iter.next();
-			if (resultVariable.variable.equals(leftside)) {
-				iter.remove();
-			} 
+		LinkedList<ResultVariable> temp = new LinkedList<>();
+		for (ResultVariable resultVariable : results) {
+			if(!resultVariable.variable.equals(leftside)) {
+				temp.add(resultVariable);
+			}
 		}
+		temp.add(new ResultVariable(leftside, label));
 		results.clear();
-		while(iter.hasNext()) {
-			results.add(iter.next());
-		}
-		results.add(new ResultVariable(leftside, label));
+		results.addAll(temp);
 		return this;
 	}
 	
