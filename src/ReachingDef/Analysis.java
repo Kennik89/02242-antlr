@@ -7,6 +7,8 @@ import PG.*;
 public class Analysis {
 
 	public void reachingDefinition(Graph graph)	{
+		System.out.println("Reaching Definition analysis:");
+		
 		LinkedList<Node> currentNodes = graph.getNodes();
 		LinkedList<Node> pendingNodes = new LinkedList<>();
 		boolean flag = true;
@@ -26,7 +28,7 @@ public class Analysis {
 			}
 			System.out.print(thisNode.toString() + ": "); results.print();
 
-;			pendingNodes.add(thisNode);
+
 			if(currentNodes.isEmpty() & flag) {
 				currentNodes = pendingNodes;
 				pendingNodes.clear();

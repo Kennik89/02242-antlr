@@ -16,10 +16,10 @@ public class PG {
 	public static void main(String args[] ) throws NumberFormatException, ScriptException {
 		
 		/* v�lg kun en nedenst�ende methode, resten skal udkommenteres */
-		//test1();
+		test1();
 		//test2();
 		//test2();
-		test3();
+		//test3();
 		//graph1();
 		//graph2();
 
@@ -33,8 +33,10 @@ public class PG {
 		DOSAnalysis DOS = new DOSAnalysis();
 		DOS.workListAlgorith(pg,initialVariables);
 		
-//		Analysis RD = new Analysis();
-//		RD.reachingDefinition(pg);
+		System.out.println();
+		
+		Analysis RD = new Analysis();
+		RD.reachingDefinition(pg);
 
 	}
 
